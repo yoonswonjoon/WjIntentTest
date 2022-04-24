@@ -68,11 +68,31 @@ class MainActivity : ComponentActivity() {
 
                             val pendingIntent = PendingIntent.getActivity(
                                 applicationContext,
-
+                                0,
+                                intent,
+                                0
                             )
-                            startActivity(intent)
+
+                            val passing = Intent().apply {
+                                action = "WJ_INTENT_TEST"
+                                putExtra("Intent", pendingIntent)
+                            }
+                            startActivity(passing)
                         }
 
+
+                        Greeting("B에게 그냥 인텐트 전달"){
+                            val intent =  Intent(
+                                applicationContext,
+                                AActivity::class.java
+                            )
+
+                            val passing = Intent().apply {
+                                action = "WJ_INTENT_TEST"
+                                putExtra("Intent", intent)
+                            }
+                            startActivity(passing)
+                        }
                         TextInput(text,changed)
 
                     }
